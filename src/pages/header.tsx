@@ -17,18 +17,16 @@ export default function Header() {
     signOut().then((e) => {
       console.log(e);
     });
-    if (!session) {
-      router.back();
-      console.log("kilepek");
-    }
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar>
         <Toolbar>
-          <Button onClick={() => handleLogout()} color="inherit">
-            LogOut
-          </Button>
+          {session && (
+            <Button onClick={() => handleLogout()} color="inherit">
+              LogOut
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
