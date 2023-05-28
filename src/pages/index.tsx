@@ -9,9 +9,14 @@ import "cesium/Build/Cesium/Widgets/widgets.css";
 const inter = Inter({ subsets: ["latin"] });
 Cesium.Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmNThhZjBkMC1iZTdmLTQ0MDYtYmQwMi00OTYxNzNkZDM3NDIiLCJpZCI6MTQxOTY4LCJpYXQiOjE2ODUyMDg1NDR9.ZIPgYSxABC6BOVo095Np_vpmB2yGInjCb4O0BNSqR30";
-
+const hiv = async () => {
+  const response = await fetch("/api/coords");
+  const data = await response.json();
+  console.log(data);
+};
 export default function Home() {
   useEffect(() => {
+    hiv();
     const viewer = new Cesium.Viewer("cesiumContainer", {
       terrainProvider: Cesium.createWorldTerrain(),
     });
