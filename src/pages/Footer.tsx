@@ -7,7 +7,7 @@ const Footer = () => {
     <BottomNavigation
       sx={{
         backgroundColor: "#3c4043",
-        bottom: "0",
+        bottom: 0,
         position: "absolute",
         width: "100vw",
       }}

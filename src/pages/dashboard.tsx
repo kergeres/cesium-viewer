@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import * as Cesium from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
+import { Box } from "@mui/material";
 Cesium.Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmNThhZjBkMC1iZTdmLTQ0MDYtYmQwMi00OTYxNzNkZDM3NDIiLCJpZCI6MTQxOTY4LCJpYXQiOjE2ODUyMDg1NDR9.ZIPgYSxABC6BOVo095Np_vpmB2yGInjCb4O0BNSqR30";
 
@@ -66,14 +67,18 @@ const Dashboard = () => {
     }
   }, [session, router]);
 
-  const componentStyle = {
-    height: "500px", // Példa: 200 pixeles magasság
-    padding: "80px",
-  };
   if (lat) {
     return (
       <Laylout>
-        <div id="cesiumContainer" style={{ height: "100vh", width: "100vw" }} />
+        <Box
+          id="cesiumContainer"
+          sx={{
+            height: { md: "80%", xs: "88%" },
+            width: "100%",
+            position: "absolute",
+            marginTop: { md: "60px", xs: "-20px" },
+          }}
+        />
       </Laylout>
     );
   }

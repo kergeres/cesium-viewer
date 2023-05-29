@@ -61,8 +61,7 @@ export default function Home(props: Props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar sx={{ display: { xs: "none", md: "block" } }} component="nav">
+      <AppBar component="nav">
         <Toolbar>
           {session && (
             <Grid container justifyContent="flex-end">
