@@ -25,7 +25,6 @@ const Login = () => {
   if (session) {
     router.push("/dashboard");
     return;
-    // return <div style={componentStyle}>hello {session.user?.name}</div>;
   } else {
     return (
       <Laylout>
