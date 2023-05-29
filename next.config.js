@@ -45,7 +45,6 @@ module.exports = {
       })
     )
     config.resolve.exportsFields = []
-    // return {...config, resolve: {...config.resolve, exportsFields:[]}}
     return config
   },
 }

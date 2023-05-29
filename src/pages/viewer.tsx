@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Laylout from "./Laylout";
+import Layout from "./layout";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import * as Cesium from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { Box } from "@mui/material";
-Cesium.Ion.defaultAccessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmNThhZjBkMC1iZTdmLTQ0MDYtYmQwMi00OTYxNzNkZDM3NDIiLCJpZCI6MTQxOTY4LCJpYXQiOjE2ODUyMDg1NDR9.ZIPgYSxABC6BOVo095Np_vpmB2yGInjCb4O0BNSqR30";
 
-const Dashboard = () => {
+const Viewer = () => {
   const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
   const [lat, setLat] = useState<number>(0);
-  const [lon, setLon] = useState<number>(0);
+  const [lng, setLng] = useState<number>(0);
   const { data: session } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    const hiv = async () => {
+    const getCoordinates = async () => {
       const response = await fetch("/api/coords");
       const data = await response.json();
       setLat(+data.budapest.lat);
-      setLon(+data.budapest.lng);
+      setLng(+data.budapest.lng);
     };
-    hiv();
+    getCoordinates();
   }, []);
-
   useEffect(() => {
     if (lat) {
       const newViewer = new Cesium.Viewer("cesiumContainer", {
@@ -33,10 +30,9 @@ const Dashboard = () => {
       setViewer(newViewer);
     }
   }, [lat]);
-
   useEffect(() => {
     if (viewer) {
-      var cityCoordinates = Cesium.Cartesian3.fromDegrees(lon, lat, 15000.0);
+      let cityCoordinates = Cesium.Cartesian3.fromDegrees(lng, lat, 15000.0);
       viewer.scene.camera.setView({
         destination: cityCoordinates,
         orientation: {
@@ -60,7 +56,6 @@ const Dashboard = () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmNThhZjBkMC1iZTdmLTQ0MDYtYmQwMi00OTYxNzNkZDM3NDIiLCJpZCI6MTQxOTY4LCJpYXQiOjE2ODUyMDg1NDR9.ZIPgYSxABC6BOVo095Np_vpmB2yGInjCb4O0BNSqR30";
     }
   }, [viewer]);
-
   useEffect(() => {
     if (!session) {
       router.push("/login");
@@ -69,7 +64,7 @@ const Dashboard = () => {
 
   if (lat) {
     return (
-      <Laylout>
+      <Layout>
         <Box
           id="cesiumContainer"
           sx={{
@@ -79,9 +74,9 @@ const Dashboard = () => {
             marginTop: { md: "60px", xs: "-20px" },
           }}
         />
-      </Laylout>
+      </Layout>
     );
   }
 };
 
-export default Dashboard;
+export default Viewer;

@@ -6,9 +6,9 @@ import * as Cesium from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import Login from "./login";
 import Header from "./header";
-import Laylout from "./Laylout";
+import Layout from "./layout";
 import React from "react";
 
 export default function Home() {
-  return <Laylout></Laylout>;
+  return <Layout></Layout>;
 }

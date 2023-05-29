@@ -1,10 +1,10 @@
 import React, { JSXElementConstructor } from "react";
 import Login from "./login";
 import Header from "./header";
-import Footer from "./Footer";
+import Footer from "./footer";
 import { useSession } from "next-auth/react";
 
-const Laylout = ({ children }: any) => {
+const Layout = ({ children = <Login /> }) => {
   const { data: session } = useSession();
 
   return (
@@ -16,4 +16,4 @@ const Laylout = ({ children }: any) => {
   );
 };
 
-export default Laylout;
+export default Layout;

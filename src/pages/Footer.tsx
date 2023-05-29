@@ -14,7 +14,6 @@ const Footer = () => {
       showLabels
     >
       <a target="_blank" href="https://github.com/kergeres">
-        {" "}
         <GitHubIcon sx={{ m: 2 }}></GitHubIcon>
       </a>
     </BottomNavigation>

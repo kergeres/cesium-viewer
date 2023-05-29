@@ -1,31 +1,20 @@
 import React, { useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-import Laylout from "./Laylout";
+import Layout from "./layout";
 import { Box, Button, Typography } from "@mui/material";
 
 const Login = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
-  const handleLogin = async () => {
-    signIn().then((e) => {
-      console.log(e);
-    });
-  };
-
-  useEffect(() => {
-    if (session?.user) {
-      console.log(session);
-    }
-  }, [router, session]);
-
+  // if user is logged in navigate to viewer (cesium map)
   if (session) {
-    router.push("/dashboard");
-    return;
+    router.push("/viewer");
+    return null;
   } else {
     return (
-      <Laylout>
+      <Layout>
         <Box
           sx={{
             p: 5,
@@ -41,17 +30,12 @@ const Login = () => {
             width: { xs: "80%", md: "auto" },
           }}
         >
-          <Typography>welcome, to see the magic, please sign in</Typography>
-          <Button
-            sx={{ mt: 3 }}
-            variant="contained"
-            onClick={() => handleLogin()}
-          >
+          <Typography>Welcome, to see the magic, please sign in</Typography>
+          <Button sx={{ mt: 3 }} variant="contained" onClick={() => signIn()}>
             Sign in
           </Button>
-          {/* <button onClick={() => signOut()}>kilep</button> */}
         </Box>
-      </Laylout>
+      </Layout>
     );
   }
 };
