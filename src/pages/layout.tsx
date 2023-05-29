@@ -1,8 +1,9 @@
-import React, { JSXElementConstructor } from "react";
+import React from "react";
 import Login from "./login";
 import Header from "./header";
-import Footer from "./footer";
 import { useSession } from "next-auth/react";
+// eslint - disable - next - line;
+import Footer from "./footer";
 
 const Layout = ({ children = <Login /> }) => {
   const { data: session } = useSession();

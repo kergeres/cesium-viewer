@@ -1,31 +1,20 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Login from "./login";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
 export default function Home(props: Props) {
   const { window } = props;
