@@ -18,7 +18,6 @@ const drawerWidth = 240;
 
 export default function Home(props: Props) {
   const { window } = props;
-  // ic mobile
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const { data: session } = useSession();
