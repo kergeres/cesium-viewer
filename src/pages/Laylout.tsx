@@ -4,7 +4,7 @@ import Header from "./header";
 import Footer from "./Footer";
 import { useSession } from "next-auth/react";
 
-const Laylout = ({ children }: Element) => {
+const Laylout = ({ children }: any) => {
   const { data: session } = useSession();
 
   return (
