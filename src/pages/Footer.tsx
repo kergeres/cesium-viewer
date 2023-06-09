@@ -2,7 +2,7 @@ import { BottomNavigation } from "@mui/material";
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <BottomNavigation
       sx={{
@@ -18,6 +18,4 @@ const Footer = () => {
       </a>
     </BottomNavigation>
   );
-};
-
-export default Footer;
+}

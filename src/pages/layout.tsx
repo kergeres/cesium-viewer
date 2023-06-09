@@ -1,8 +1,9 @@
 import React from "react";
 import Login from "./login";
+import Footer from "./footer";
+
 import Header from "./header";
 import { useSession } from "next-auth/react";
-import Footer from "./footer";
 
 const Layout = ({ children = <Login /> }) => {
   const { data: session } = useSession();
